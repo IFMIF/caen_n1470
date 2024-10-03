@@ -1,0 +1,85 @@
+outTerminator = CR LF;
+inTerminator = CR LF;
+ReadTimeout = 2000;
+ReplyTimeout =2000;
+ExtraInput = Ignore;
+WriteTimeout = 2000;
+
+#---------Power supplies CAEN N1470 IFMIF Diags --------------#
+
+
+setI {
+   out "$BD:\$1,CMD:SET,CH:\$2,PAR:ISET,VAL:%8.2f";
+   in "#BD:\$1,CMD:OK"; 
+}
+
+setV {
+   out "$BD:\$1,CMD:SET,CH:\$2,PAR:VSET,VAL:%7.1f";
+   in "#BD:\$1,CMD:OK"; 
+}
+
+
+ReadVset {
+   out "$BD:\$1,CMD:MON,CH:\$2,PAR:VSET";
+   in "#BD:\$1,CMD:OK,VAL:%f"; 
+}
+
+
+ReadIset {
+   out "$BD:\$1,CMD:MON,CH:\$2,PAR:ISET";
+   in "#BD:\$1,CMD:OK,VAL:%f";
+}
+
+
+ReadVmon {
+   out "$BD:\$1,CMD:MON,CH:\$2,PAR:VMON"; 
+   in "#BD:\$1,CMD:OK,VAL:%f"; 
+}
+
+ReadImon {
+   out "$BD:\$1,CMD:MON,CH:\$2,PAR:IMON";
+   in "#BD:\$1,CMD:OK,VAL:%f";
+}
+
+ReadStat {
+   out "$BD:\$1,CMD:MON,CH:\$2,PAR:STAT";
+   in "#BD:\$1,CMD:OK,VAL:%i";
+}
+
+ON {
+   out "$BD:\$1,CMD:SET,CH:\$2,PAR:ON";
+   in "#BD:\$1,CMD:OK"; 
+}
+
+
+OFF{
+   out "$BD:\$1,CMD:SET,CH:\$2,PAR:OFF";
+   in "#BD:\$1,CMD:OK"; 
+}
+
+
+RampUp {
+   out "$BD:\$1,CMD:SET,CH:\$2,PAR:RUP,VAL:%i";
+   in "#BD:\$1,CMD:OK"; 
+}
+
+
+RampDown {
+   out "$BD:\$1,CMD:SET,CH:\$2,PAR:RDW,VAL:%f";
+   in "#BD:\$1,CMD:OK"; 
+}
+
+
+Clear{
+   out "$BD:\$1,CMD:SET,PAR:BDCLR";
+   in "#BD:\$1,CMD:OK"; 
+}
+
+
+MaxV {
+   out "$BD:\$1,CMD:SET,CH:\$2,PAR:MAXV,VAL:%i";
+   in "#BD:\$1,CMD:OK"; 
+}
+
+
+

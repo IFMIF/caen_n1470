@@ -1,0 +1,156 @@
+record(ao, "$(SS):$(DD)_$(CC):VSet") {
+  field(DESC, "Commande V")
+  field(DTYP, "Soft Channel")
+  field(OMSL, "supervisory")
+  field(FLNK,"$(SS):$(DD)_$(CC):VCalc")
+  field(PREC, "2")
+  field(EGU, "kV")
+  field(DRVH, "$(V_DRVH)")
+  field(DRVL, "0.0")
+  field(HOPR, "$(V_HOPR)")
+  field(LOPR, "0.0")
+}
+
+record(calcout, "$(SS):$(DD)_$(CC):VCalc") {
+  field(DESC, "kV en V")
+  field(DTYP, "stream")
+  field(INPA, "1000.0")
+  field(INPB, "$(SS):$(DD)_$(CC):VSet.VAL")
+  field(CALC, "A*B")
+  field(OOPT, "Every Time")
+#  field(DOPT, "CALC")
+  field(OUT, "@psCaen_proto.db setV($(board),$(channel)) N1470")
+}
+
+record(ao, "$(SS):$(DD)_$(CC):ISet") {
+  field(DESC, "Commande I")
+  field(DTYP, "stream")
+  field(OMSL, "supervisory")
+  field(OUT, "@psCaen_proto.db setI($(board),$(channel)) N1470")
+  field(PREC, "2")
+  field(EGU, "uA")
+  field(DRVH, "$(I_DRVH)")
+  field(DRVL, "0.0")
+  field(HOPR, "$(I_HOPR)")
+  field(LOPR, "0.0")
+}
+
+record(ao, "$(SS):$(DD)_$(CC):Rup") {
+  field(DESC, "Ramp Up V/s")
+  field(DTYP, "stream")
+  field(OMSL, "supervisory")
+  field(OUT, "@psCaen_proto.db RampUp($(board),$(channel)) N1470")
+  field(PREC, "0")
+  field(EGU, "V/s")
+  field(DRVH, "500")
+  field(DRVL, "0")
+  field(HOPR, "500")
+  field(LOPR, "0")
+}
+
+record(ao, "$(SS):$(DD)_$(CC):Rdown") {
+  field(DESC, "Ramp down V/s")
+  field(DTYP, "stream")
+  field(OMSL, "supervisory")
+  field(OUT, "@psCaen_proto.db RampDown($(board),$(channel)) N1470")
+  field(PREC, "0")
+  field(EGU, "V/s")
+  field(DRVH, "500")
+  field(DRVL, "0")
+  field(HOPR, "500")
+  field(LOPR, "0")
+}
+
+record(bo, "$(SS):$(DD)_$(CC):Clear") {
+  field(DTYP, "stream")
+  field(OUT, "@psCaen_proto.db Clear($(board),$(channel)) N1470")
+}
+
+record(bo, "$(SS):$(DD)_$(CC):Von") {
+  field(DTYP, "stream")
+  field(OUT, "@psCaen_proto.db ON($(board),$(channel)) N1470")
+}
+
+record(bo, "$(SS):$(DD)_$(CC):Voff") {
+  field(DTYP, "stream")
+  field(OUT, "@psCaen_proto.db OFF($(board),$(channel)) N1470")
+}
+
+
+record(ao, "$(SS):$(DD)_$(CC):VmaxSet") {
+  field(DESC, "Commande Vmax")
+  field(DTYP, "Soft Channel")
+  field(OMSL, "supervisory")
+  field(FLNK,"$(SS):$(DD)_$(CC):VmaxCalc")
+  field(PREC, "2")
+  field(EGU, "kV")
+  field(DRVH, "$(V_DRVH)")
+  field(DRVL, "0.0")
+  field(HOPR, "$(V_HOPR)")
+  field(LOPR, "0.0")
+}
+
+
+record(calcout,"$(SS):$(DD)_$(CC):VmaxCalc") {
+ field(DESC,"kV en V ")
+ field(DTYP, "stream")
+ field(CALC,"A*B")
+ field(INPA,"1000.0")
+ field(INPB,"$(SS):$(DD)_$(CC):VmaxSet.VAL")
+ field(OOPT,"Every Time")
+# field(DOPT,"CALC")
+ field(OUT, "@psCaen_proto.db MaxV($(board),$(channel)) N1470")
+}
+
+record(ai, "$(SS):$(DD)_$(CC):LectVset") {
+  field(SCAN, "2 second")
+  field(DTYP, "stream")
+  field(FLNK,"$(SS):$(DD)_$(CC):VsetRdbk")
+  field(INP, "@psCaen_proto.db ReadVset($(board),$(channel)) N1470")
+}
+
+record(calcout, "$(SS):$(DD)_$(CC):VsetRdbk") {
+  field(DESC, "en kV")
+  field(DTYP, "Soft Channel")
+  field(INPA, "1000.0")
+  field(INPB, "$(SS):$(DD)_$(CC):LectVset.VAL")
+  field(CALC, "B / A")
+  field(PREC, "2") 
+}
+
+record(ai, "$(SS):$(DD)_$(CC):IsetRdbk") {
+  field(SCAN, "2 second")
+  field(DTYP, "stream")
+  field(INP, "@psCaen_proto.db ReadIset($(board),$(channel)) N1470")
+}
+
+
+record(ai, "$(SS):$(DD)_$(CC):VRdbk") {
+  field(SCAN, "2 second")
+  field(DTYP, "stream")
+  field(FLNK,"$(SS):$(DD)_$(CC):VmonRdbk")
+  field(INP, "@psCaen_proto.db ReadVmon($(board),$(channel)) N1470")
+}
+
+record(calcout, "$(SS):$(DD)_$(CC):VmonRdbk") {
+  field(DESC, "en kV")
+  field(DTYP, "Soft Channel")
+  field(EGU, "kV")
+  field(INPA, "1000.0")
+  field(INPB, "$(SS):$(DD)_$(CC):VRdbk.VAL")
+  field(CALC, "B / A")
+  field(PREC, "2")
+}
+
+record(ai, "$(SS):$(DD)_$(CC):ImonRdbk") {
+  field(SCAN, "2 second")
+  field(DTYP, "stream")
+  field(EGU, "uA")
+  field(INP, "@psCaen_proto.db ReadImon($(board),$(channel)) N1470")
+}
+
+record(ai, "$(SS):$(DD)_$(CC):StatRdbk") {
+  field(SCAN, "2 second")
+  field(DTYP, "stream")
+  field(INP, "@psCaen_proto.db ReadStat($(board),$(channel)) N1470")
+}
