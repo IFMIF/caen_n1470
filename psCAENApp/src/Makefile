@@ -16,10 +16,9 @@ psCAEN_DBD += stream.dbd
 psCAEN_DBD += asyn.dbd
 psCAEN_DBD += drvAsynSerialPort.dbd
 psCAEN_DBD += drvAsynIPPort.dbd
-#psCAEN_DBD += drvAsynUSBTMC.dbd
 
 # Link in the code from our support library
-psCAEN_LIBS += calc stream asyn
+psCAEN_LIBS += calc stream asyn pcre seq pv sscan
 
 # psCAEN_registerRecordDeviceDriver.cpp derives from psCAEN.dbd
 psCAEN_SRCS += psCAEN_registerRecordDeviceDriver.cpp
