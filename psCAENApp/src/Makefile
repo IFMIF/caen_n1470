@@ -4,7 +4,7 @@ include $(TOP)/configure/CONFIG
 #----------------------------------------
 #  ADD MACRO DEFINITIONS BELOW HERE
 # Build the IOC application
-PROD_IOC = psCAEN
+LIBRARY_IOC = psCAEN
 
 # psCAEN.dbd will be created and installed
 DBD += psCAEN.dbd
@@ -24,8 +24,8 @@ psCAEN_LIBS += calc stream asyn pcre seq pv sscan
 psCAEN_SRCS += psCAEN_registerRecordDeviceDriver.cpp
 
 # Build the main IOC entry point where needed
-psCAEN_SRCS_DEFAULT += psCAENMain.cpp
-psCAEN_SRCS_vxWorks += -nil-
+# psCAEN_SRCS_DEFAULT += psCAENMain.cpp
+# psCAEN_SRCS_vxWorks += -nil-
 
 # Finally link IOC to the EPICS Base libraries
 psCAEN_LIBS += $(EPICS_BASE_IOC_LIBS)

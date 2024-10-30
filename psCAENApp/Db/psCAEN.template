@@ -19,14 +19,14 @@ record(calcout, "$(SS):$(DD)_$(CC):VCalc") {
   field(CALC, "A*B")
   field(OOPT, "Every Time")
 #  field(DOPT, "CALC")
-  field(OUT, "@psCaen_proto.db setV($(board),$(channel)) N1470")
+  field(OUT, "@psCAEN.proto setV($(board),$(channel)) N1470")
 }
 
 record(ao, "$(SS):$(DD)_$(CC):ISet") {
   field(DESC, "Commande I")
   field(DTYP, "stream")
   field(OMSL, "supervisory")
-  field(OUT, "@psCaen_proto.db setI($(board),$(channel)) N1470")
+  field(OUT, "@psCAEN.proto setI($(board),$(channel)) N1470")
   field(PREC, "2")
   field(EGU, "uA")
   field(DRVH, "$(I_DRVH)")
@@ -39,7 +39,7 @@ record(ao, "$(SS):$(DD)_$(CC):Rup") {
   field(DESC, "Ramp Up V/s")
   field(DTYP, "stream")
   field(OMSL, "supervisory")
-  field(OUT, "@psCaen_proto.db RampUp($(board),$(channel)) N1470")
+  field(OUT, "@psCAEN.proto RampUp($(board),$(channel)) N1470")
   field(PREC, "0")
   field(EGU, "V/s")
   field(DRVH, "500")
@@ -52,7 +52,7 @@ record(ao, "$(SS):$(DD)_$(CC):Rdown") {
   field(DESC, "Ramp down V/s")
   field(DTYP, "stream")
   field(OMSL, "supervisory")
-  field(OUT, "@psCaen_proto.db RampDown($(board),$(channel)) N1470")
+  field(OUT, "@psCAEN.proto RampDown($(board),$(channel)) N1470")
   field(PREC, "0")
   field(EGU, "V/s")
   field(DRVH, "500")
@@ -63,17 +63,17 @@ record(ao, "$(SS):$(DD)_$(CC):Rdown") {
 
 record(bo, "$(SS):$(DD)_$(CC):Clear") {
   field(DTYP, "stream")
-  field(OUT, "@psCaen_proto.db Clear($(board),$(channel)) N1470")
+  field(OUT, "@psCAEN.proto Clear($(board),$(channel)) N1470")
 }
 
 record(bo, "$(SS):$(DD)_$(CC):Von") {
   field(DTYP, "stream")
-  field(OUT, "@psCaen_proto.db ON($(board),$(channel)) N1470")
+  field(OUT, "@psCAEN.proto ON($(board),$(channel)) N1470")
 }
 
 record(bo, "$(SS):$(DD)_$(CC):Voff") {
   field(DTYP, "stream")
-  field(OUT, "@psCaen_proto.db OFF($(board),$(channel)) N1470")
+  field(OUT, "@psCAEN.proto OFF($(board),$(channel)) N1470")
 }
 
 
@@ -99,14 +99,14 @@ record(calcout,"$(SS):$(DD)_$(CC):VmaxCalc") {
  field(INPB,"$(SS):$(DD)_$(CC):VmaxSet.VAL")
  field(OOPT,"Every Time")
 # field(DOPT,"CALC")
- field(OUT, "@psCaen_proto.db MaxV($(board),$(channel)) N1470")
+ field(OUT, "@psCAEN.proto MaxV($(board),$(channel)) N1470")
 }
 
 record(ai, "$(SS):$(DD)_$(CC):LectVset") {
   field(SCAN, "2 second")
   field(DTYP, "stream")
   field(FLNK,"$(SS):$(DD)_$(CC):VsetRdbk")
-  field(INP, "@psCaen_proto.db ReadVset($(board),$(channel)) N1470")
+  field(INP, "@psCAEN.proto ReadVset($(board),$(channel)) N1470")
 }
 
 record(calcout, "$(SS):$(DD)_$(CC):VsetRdbk") {
@@ -121,7 +121,7 @@ record(calcout, "$(SS):$(DD)_$(CC):VsetRdbk") {
 record(ai, "$(SS):$(DD)_$(CC):IsetRdbk") {
   field(SCAN, "2 second")
   field(DTYP, "stream")
-  field(INP, "@psCaen_proto.db ReadIset($(board),$(channel)) N1470")
+  field(INP, "@psCAEN.proto ReadIset($(board),$(channel)) N1470")
 }
 
 
@@ -129,7 +129,7 @@ record(ai, "$(SS):$(DD)_$(CC):VRdbk") {
   field(SCAN, "2 second")
   field(DTYP, "stream")
   field(FLNK,"$(SS):$(DD)_$(CC):VmonRdbk")
-  field(INP, "@psCaen_proto.db ReadVmon($(board),$(channel)) N1470")
+  field(INP, "@psCAEN.proto ReadVmon($(board),$(channel)) N1470")
 }
 
 record(calcout, "$(SS):$(DD)_$(CC):VmonRdbk") {
@@ -146,11 +146,11 @@ record(ai, "$(SS):$(DD)_$(CC):ImonRdbk") {
   field(SCAN, "2 second")
   field(DTYP, "stream")
   field(EGU, "uA")
-  field(INP, "@psCaen_proto.db ReadImon($(board),$(channel)) N1470")
+  field(INP, "@psCAEN.proto ReadImon($(board),$(channel)) N1470")
 }
 
 record(ai, "$(SS):$(DD)_$(CC):StatRdbk") {
   field(SCAN, "2 second")
   field(DTYP, "stream")
-  field(INP, "@psCaen_proto.db ReadStat($(board),$(channel)) N1470")
+  field(INP, "@psCAEN.proto ReadStat($(board),$(channel)) N1470")
 }
