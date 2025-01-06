@@ -2,15 +2,8 @@
 ############################ CAEN Power Supplies #################################################
 ##################################################################################################
 
-############ Simulation #########
-file "db/psCaenN1470_Simu.db" {
-pattern 
-{ NameSimu }
-{ "HEBT:IPM"}
-}
-  	
-############ Device #########
-file "db/psCaenN1470.db" 
+############ Device template #########
+file "db/psCAEN.template" 
 {
 pattern 
 { SS,DD,CC,board, channel,I_DRVH,V_DRVH,I_HOPR,V_HOPR }

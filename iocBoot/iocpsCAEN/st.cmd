@@ -14,8 +14,8 @@ epicsEnvSet "IPport" "4001"
 epicsEnvSet "PORT" "N1470"
 
 ## Register all support components
-dbLoadDatabase "dbd/psCAEN.dbd"
-psCAEN_registerRecordDeviceDriver pdbbase
+dbLoadDatabase("dbd/psCAENTest.dbd")
+psCAENTest_registerRecordDeviceDriver(pdbbase)
 
 drvAsynIPPortConfigure($(PORT), "$(IP):$(IPport)",0,0,0) 
 dbLoadTemplate("db/psCAEN.substitutions")
