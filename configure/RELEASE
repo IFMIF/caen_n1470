@@ -30,7 +30,7 @@ STREAM = $(SUPPORT)/StreamDevice
 ASYN = $(SUPPORT)/asyn
 CALC= $(SUPPORT)/calc
 PCRE= $(SUPPORT)/pcre
-ASCAN= $(SUPPORT)/sscan
+SSCAN= $(SUPPORT)/sscan
 
 # EPICS_BASE should appear last so earlier modules can override stuff:
 EPICS_BASE = /home/epicsmgr/epics-7.0/target/base
