@@ -5,10 +5,8 @@ include $(TOP)/configure/CONFIG
 
 # Install databases, templates & substitutions like this
 DB += $(ASYN)/db/asynRecord.db
-
-DB += psCAEN.proto
-DB += psCAEN.template
-DB += psCAEN.substitutions
+DB += n1470.proto
+DB += n1470.db
 
 # If <anyname>.db template is not named <anyname>*.template add
 # <anyname>_TEMPLATE = <templatename>

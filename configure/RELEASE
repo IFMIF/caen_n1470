@@ -22,18 +22,16 @@
 # the CONFIG_SITE file.
 
 # Support directory
-SUPPORT = /home/epicsmgr/epics-7.0/target/support/
+SUPPORT = /opt/epics-7.0/support
 
 # If using the sequencer, point SNCSEQ at its top directory:
 SNCSEQ = $(SUPPORT)/seq
 STREAM = $(SUPPORT)/StreamDevice
-ASYN = $(SUPPORT)/asyn
-CALC= $(SUPPORT)/calc
-PCRE= $(SUPPORT)/pcre
-SSCAN= $(SUPPORT)/sscan
+ASYN =  $(SUPPORT)/asyn
+CALC = $(SUPPORT)/calc
 
 # EPICS_BASE should appear last so earlier modules can override stuff:
-EPICS_BASE = /home/epicsmgr/epics-7.0/target/base
+EPICS_BASE = /opt/epics-7.0/base
 
 # Set RULES here if you want to use build rules from somewhere
 # other than EPICS_BASE:

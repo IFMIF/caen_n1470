@@ -1,4 +1,4 @@
-# PS CAEN N1470
+# CAEN N1470 power supply
 
 This repository contains the source code for the EPICS support of the CAEN N1470 power supply module.
 
@@ -12,5 +12,5 @@ This is an EPICS devices support module and requires EPICS base, asyn and Stream
 | ------------- | -------------------------------------- |
 | configure     | Configuration file folder              |
 | iocBoot       | ioc example for the test application   |
-| psCAENApp     | Sources files for the device support   |
-| psCAENTestApp | Sources files for the test application |
+| n1470Sup      | Sources files for the device support   |
+| n1470TestApp  | Sources files for the test application |
