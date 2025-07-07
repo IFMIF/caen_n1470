@@ -1,8 +1,8 @@
-record(ao, "$(P):$(R):VSet") {
+record(ao, "$(P)$(R):VSet") {
   field(DESC, "Commande V")
   field(DTYP, "Soft Channel")
   field(OMSL, "supervisory")
-  field(FLNK,"$(P):$(R):VCalc")
+  field(FLNK,"$(P)$(R):VCalc")
   field(PREC, "2")
   field(EGU, "kV")
   field(DRVH, "$(V_DRVH)")
@@ -11,22 +11,22 @@ record(ao, "$(P):$(R):VSet") {
   field(LOPR, "0.0")
 }
 
-record(calcout, "$(P):$(R):VCalc") {
+record(calcout, "$(P)$(R):VCalc") {
   field(DESC, "kV en V")
   field(DTYP, "stream")
   field(INPA, "1000.0")
-  field(INPB, "$(P):$(R):VSet.VAL")
+  field(INPB, "$(P)$(R):VSet.VAL")
   field(CALC, "A*B")
   field(OOPT, "Every Time")
 #  field(DOPT, "CALC")
-  field(OUT, "@n1470.proto setV($(board),$(channel)) N1470")
+  field(OUT, "@caen_N1470.proto setV($(board),$(channel)) N1470")
 }
 
-record(ao, "$(P):$(R):ISet") {
+record(ao, "$(P)$(R):ISet") {
   field(DESC, "Commande I")
   field(DTYP, "stream")
   field(OMSL, "supervisory")
-  field(OUT, "@n1470.proto setI($(board),$(channel)) N1470")
+  field(OUT, "@caen_N1470.proto setI($(board),$(channel)) N1470")
   field(PREC, "2")
   field(EGU, "uA")
   field(DRVH, "$(I_DRVH)")
@@ -35,11 +35,11 @@ record(ao, "$(P):$(R):ISet") {
   field(LOPR, "0.0")
 }
 
-record(ao, "$(P):$(R):Rup") {
+record(ao, "$(P)$(R):Rup") {
   field(DESC, "Ramp Up V/s")
   field(DTYP, "stream")
   field(OMSL, "supervisory")
-  field(OUT, "@n1470.proto RampUp($(board),$(channel)) N1470")
+  field(OUT, "@caen_N1470.proto RampUp($(board),$(channel)) N1470")
   field(PREC, "0")
   field(EGU, "V/s")
   field(DRVH, "500")
@@ -48,11 +48,11 @@ record(ao, "$(P):$(R):Rup") {
   field(LOPR, "0")
 }
 
-record(ao, "$(P):$(R):Rdown") {
+record(ao, "$(P)$(R):Rdown") {
   field(DESC, "Ramp down V/s")
   field(DTYP, "stream")
   field(OMSL, "supervisory")
-  field(OUT, "@n1470.proto RampDown($(board),$(channel)) N1470")
+  field(OUT, "@caen_N1470.proto RampDown($(board),$(channel)) N1470")
   field(PREC, "0")
   field(EGU, "V/s")
   field(DRVH, "500")
@@ -61,27 +61,27 @@ record(ao, "$(P):$(R):Rdown") {
   field(LOPR, "0")
 }
 
-record(bo, "$(P):$(R):Clear") {
+record(bo, "$(P)$(R):Clear") {
   field(DTYP, "stream")
-  field(OUT, "@n1470.proto Clear($(board),$(channel)) N1470")
+  field(OUT, "@caen_N1470.proto Clear($(board),$(channel)) N1470")
 }
 
-record(bo, "$(P):$(R):Von") {
+record(bo, "$(P)$(R):Von") {
   field(DTYP, "stream")
-  field(OUT, "@n1470.proto ON($(board),$(channel)) N1470")
+  field(OUT, "@caen_N1470.proto ON($(board),$(channel)) N1470")
 }
 
-record(bo, "$(P):$(R):Voff") {
+record(bo, "$(P)$(R):Voff") {
   field(DTYP, "stream")
-  field(OUT, "@n1470.proto OFF($(board),$(channel)) N1470")
+  field(OUT, "@caen_N1470.proto OFF($(board),$(channel)) N1470")
 }
 
 
-record(ao, "$(P):$(R):VmaxSet") {
+record(ao, "$(P)$(R):VmaxSet") {
   field(DESC, "Commande Vmax")
   field(DTYP, "Soft Channel")
   field(OMSL, "supervisory")
-  field(FLNK,"$(P):$(R):VmaxCalc")
+  field(FLNK,"$(P)$(R):VmaxCalc")
   field(PREC, "2")
   field(EGU, "kV")
   field(DRVH, "$(V_DRVH)")
@@ -91,66 +91,66 @@ record(ao, "$(P):$(R):VmaxSet") {
 }
 
 
-record(calcout,"$(P):$(R):VmaxCalc") {
+record(calcout,"$(P)$(R):VmaxCalc") {
  field(DESC,"kV en V ")
  field(DTYP, "stream")
  field(CALC,"A*B")
  field(INPA,"1000.0")
- field(INPB,"$(P):$(R):VmaxSet.VAL")
+ field(INPB,"$(P)$(R):VmaxSet.VAL")
  field(OOPT,"Every Time")
 # field(DOPT,"CALC")
- field(OUT, "@n1470.proto MaxV($(board),$(channel)) N1470")
+ field(OUT, "@caen_N1470.proto MaxV($(board),$(channel)) N1470")
 }
 
-record(ai, "$(P):$(R):LectVset") {
+record(ai, "$(P)$(R):LectVset") {
   field(SCAN, "2 second")
   field(DTYP, "stream")
-  field(FLNK,"$(P):$(R):VsetRdbk")
-  field(INP, "@n1470.proto ReadVset($(board),$(channel)) N1470")
+  field(FLNK,"$(P)$(R):VsetRdbk")
+  field(INP, "@caen_N1470.proto ReadVset($(board),$(channel)) N1470")
 }
 
-record(calcout, "$(P):$(R):VsetRdbk") {
+record(calcout, "$(P)$(R):VsetRdbk") {
   field(DESC, "en kV")
   field(DTYP, "Soft Channel")
   field(INPA, "1000.0")
-  field(INPB, "$(P):$(R):LectVset.VAL")
+  field(INPB, "$(P)$(R):LectVset.VAL")
   field(CALC, "B / A")
   field(PREC, "2") 
 }
 
-record(ai, "$(P):$(R):IsetRdbk") {
+record(ai, "$(P)$(R):IsetRdbk") {
   field(SCAN, "2 second")
   field(DTYP, "stream")
-  field(INP, "@n1470.proto ReadIset($(board),$(channel)) N1470")
+  field(INP, "@caen_N1470.proto ReadIset($(board),$(channel)) N1470")
 }
 
 
-record(ai, "$(P):$(R):VRdbk") {
+record(ai, "$(P)$(R):VRdbk") {
   field(SCAN, "2 second")
   field(DTYP, "stream")
-  field(FLNK,"$(P):$(R):VmonRdbk")
-  field(INP, "@n1470.proto ReadVmon($(board),$(channel)) N1470")
+  field(FLNK,"$(P)$(R):VmonRdbk")
+  field(INP, "@caen_N1470.proto ReadVmon($(board),$(channel)) N1470")
 }
 
-record(calcout, "$(P):$(R):VmonRdbk") {
+record(calcout, "$(P)$(R):VmonRdbk") {
   field(DESC, "en kV")
   field(DTYP, "Soft Channel")
   field(EGU, "kV")
   field(INPA, "1000.0")
-  field(INPB, "$(P):$(R):VRdbk.VAL")
+  field(INPB, "$(P)$(R):VRdbk.VAL")
   field(CALC, "B / A")
   field(PREC, "2")
 }
 
-record(ai, "$(P):$(R):ImonRdbk") {
+record(ai, "$(P)$(R):ImonRdbk") {
   field(SCAN, "2 second")
   field(DTYP, "stream")
   field(EGU, "uA")
-  field(INP, "@n1470.proto ReadImon($(board),$(channel)) N1470")
+  field(INP, "@caen_N1470.proto ReadImon($(board),$(channel)) N1470")
 }
 
-record(ai, "$(P):$(R):StatRdbk") {
+record(ai, "$(P)$(R):StatRdbk") {
   field(SCAN, "2 second")
   field(DTYP, "stream")
-  field(INP, "@n1470.proto ReadStat($(board),$(channel)) N1470")
+  field(INP, "@caen_N1470.proto ReadStat($(board),$(channel)) N1470")
 }
